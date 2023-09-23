@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: A sample template    
+Resources:
+  MyEC2Instances:
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: "ami-03f65b8614a860c29"
+      InstanceType: t2.micro
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2            
+            DeleteOnTermination: true
+            VolumeSize: 8
+      Tags:
+        - Key: Name
+          Value: Webserver
+        - Key: createdBy
+          Value: DevOps Team
+        
+    Type: "AWS::EC2::Instance"
+    Propeties: 
+      ImageId: "ami-03f65b8614a860c29"
+      InstanceType: t2.micro
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2            
+            DeleteOnTermination: true
+            VolumeSize: 10
+      Tags:
+        - Key: Name
+          Value: Appserver
+        - Key: createdBy
+          Value: DevOps Team
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: jjtech-tower-joel-w-f-2
