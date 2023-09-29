@@ -1,46 +1,79 @@
-# This is a hands-on task to create the cloudformation stack with
+ # This is a hands-on task to create the cloudformation stack with
 # 2 EC2 instances in total & one s3 bucket
-# Webserver with 8gb EBS
-# Appserver with 10gb EBS
+# Webserver with 8gb EBS Volume
+# Appserver with 10gb EBS Volume
 # One S3 bucket to store invoice pdf files
 
-AWSTemplateFormatVersion: 2010-09-09
-Description: A sample template 
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
 
 Parameters:
-   WebserverAmiid
+  WebserverAmiid:
     Description: The EC2 AMI id
     Type: String
-    Default: "ami-03f65b8614a860c29"
+    Default: ami-038937b3d6616035f
 
-  WebserverInstancetype
+  WebserverInstancetype:
     Description: The EC2 Instance Type
     Type: String
     Default: t2.micro
 
-  WebserverVolumesize
-    Description: The EC2 Volume Size
+  WebserverVolumesize:
+    Description: The EC2 Volumesize
     Type: Number
     Default: 8
 
-   AppserverAmiid
+  AppserverAmiid:
     Description: The EC2 AMI id
     Type: String
-    Default: "ami-03f65b8614a860c29"
+    Default: ami-038937b3d6616035f
 
-  AppserverInstancetype
+  AppserverInstancetype:
     Description: The EC2 Instance Type
     Type: String
     Default: t2.micro
 
-  AppserverVolumesize
-    Description: The EC2 Volume Size
+  AppserverVolumesize:
+    Description: The EC2 Volumesize
     Type: Number
-    Default: 10
- 
- S3bucketname:
-   Description:
-   
+    Default: 8
+
+  S3bucketname:
+    Description: The name of the S3 bucket
+    Type: String
+
+
+Resources:
+  Webserver:
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: !Ref WebserverAmiid
+      InstanceType: !Ref WebserverInstancetype      
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2            
+            DeleteOnTermination: true
+            VolumeSize: !Ref WebserverVolumesize
+  Appserver:
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: !Ref AppserverAmiid
+      InstanceType: !Ref AppserverInstancetype
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/xvda
+          Ebs:
+            VolumeType: gp2            
+            DeleteOnTermination: true
+            VolumeSize: !Ref AppserverVolumesize
+  
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Ref S3bucketname
+
 
  
 
