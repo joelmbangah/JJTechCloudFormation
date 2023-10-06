@@ -16,8 +16,15 @@ Conditions:
   set of conditions
 
 Resources:
+  set of resources 
+
+  set of resources
+
+  set of resources
+
   set of resources
   # Mandatory section for the cloudformation
+  # You can have multiple resources in the resource block
 
 Outputs:
   set of outputs

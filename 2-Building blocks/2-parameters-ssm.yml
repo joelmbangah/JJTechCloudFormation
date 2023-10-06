@@ -1,6 +1,6 @@
 # In this template we are going to learn about usage of parameters
 # Types: string, number, list, AWS specific type
-# Use of the of the intrinsic function !Ref
+# Use of the intrinsic function !Ref
 # Specially about the AWS SSM parameter store integration with cloudformation
 # Dependencies: This cloudformation template have a dependency on the SSM parameter store
 # with a value : /jjtech/ec2/instancetype
@@ -26,7 +26,7 @@ Parameters:
   VolumeSize:
     Description: EBS Volume size
     Type: Number
-    Default: 8
+    Default: /jjtech/ec2/Volumesize   
     MinValue: 8
     MaxValue: 100
     ConstraintDescription: must be a number between 8 to 100 Gb

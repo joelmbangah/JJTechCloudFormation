@@ -1,11 +1,10 @@
-
 AWSTemplateFormatVersion: "2010-09-09"
 Description: A sample template
 Resources:
-  MyEC2Instance:
+  MyTestEc2:
     Type: "AWS::EC2::Instance"
     Properties: 
-      ImageId: "ami-03f65b8614a860c29"
+      ImageId: "ami-067d1e60475437da2"
       InstanceType: t2.micro      
       BlockDeviceMappings:
         -
@@ -14,3 +13,39 @@ Resources:
             VolumeType: gp2            
             DeleteOnTermination: true
             VolumeSize: 8
+  
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: jjtech-tower-w-f-1234567
+
+Outputs:
+  InstanceID:
+    Description: The Instance ID
+    Value: !Ref MyTestEc2
+    Export:
+      Name: M-W-Tower-1-EC2
+
+  PublicIP:
+    Description: PublicIP
+    Value: !GetAtt MyTestEc2.PublicIp
+  
+  privateip:
+    Description: privateip
+    Value: !GetAtt MyTestEc2.PrivateIp
+
+  s3output:
+    Value: !Ref S3Bucket
+
+  s3arn:
+    Value: !GetAtt S3Bucket.Arn
+
+
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Resources:
+
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !ImportValue M-W-Tower-1-EC2

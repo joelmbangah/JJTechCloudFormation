@@ -1,6 +1,6 @@
 # In this template we are going to learn about usage of parameters
 # Types: string, number, list, AWS specific type
-# Use of the of the intrinsic function !Ref
+# Use of the intrinsic function !Ref
 # Ref: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html
 
 ---
@@ -25,7 +25,7 @@ Parameters:
   AMIID:
     Description: The EC2 AMI id
     Type: String  
-    Default: ami-0022f774911c1d690
+    Default: ami-067d1e60475437da2
     ConstraintDescription: Must be a valid AMI based on the region
 
   VolumeSize:
