@@ -26,7 +26,7 @@ Parameters:
 
   ImageId:
     Type: String
-    Default: ami-0022f774911c1d690
+    Default: ami-041feb57c611358bd
             
 
 Resources:
