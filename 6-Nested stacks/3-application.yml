@@ -1,9 +1,9 @@
-# Nasted templates
+# Nested templates
 # Dependencies: Create an s3 bucket and upload security-group.yml & ec2.yml
-# & refer those endpoints while creatint this main template.
+# & refer those endpoints while creating this main template.
 
 AWSTemplateFormatVersion: "2010-09-09"
-Description: Template to create nasted templates
+Description: Template to create nested templates
 
 Parameters:
 
