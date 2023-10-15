@@ -5,8 +5,9 @@ Resources:
   MyEC2Instance:
     Type: "AWS::EC2::Instance"
     Properties: 
-      ImageId: "ami-03f65b8614a860c29"
-      InstanceType: t2.micro      
+      ImageId: "ami-041feb57c611358bd"
+      InstanceType: t2.micro 
+      KeyName: ADS-KEYS      
       BlockDeviceMappings:
         -
           DeviceName: /dev/xvda
