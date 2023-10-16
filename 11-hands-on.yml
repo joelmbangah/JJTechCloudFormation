@@ -35,6 +35,5 @@ Resources:
   S3InvoiceBucket:
     Type: AWS::S3::Bucket 
     Properties:
-       BucketName: "ami-041feb57c611358bd"
-             
+       BucketName: "ami-041feb57c611358bd"    
 
