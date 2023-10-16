@@ -32,7 +32,11 @@ Resources:
           Iops: 100
           DeleteOnTermination: true
           VolumeSize: 10
-       
+  S3InvoiceBucket:
+    Type: AWS::S3::Bucket 
+    Properties:
+       BucketName: "ami-041feb57c611358bd"
+             
 
 
 
