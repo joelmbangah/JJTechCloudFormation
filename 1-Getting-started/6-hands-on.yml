@@ -4,13 +4,18 @@
 # AppServer with 10gb EBS
 # One s3 bucket to store invoice pds files
 
-
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: "t2.micro"
+    Description: "Type of the EC2 instance to create"
+  
 Resources:
   WebServer:
     Type: AWS::EC2::Instance
     Properties:
        ImageId: "ami-041feb57c611358bd"
-       InstanceType: "t2.micro"
+       InstanceType: !Ref InstanceTypeParameter
        KeyName: "ADS-KEYS"
        BlockDeviceMappings: 
        - DeviceName: "/dev/sdm"
@@ -35,5 +40,9 @@ Resources:
   S3InvoiceBucket:
     Type: AWS::S3::Bucket 
     Properties:
-       BucketName: "ami-041feb57c611358bd"    
+       BucketName: "ami-041feb57c611358bd"  
+
+  S3StorageBucket:
+    Type: AWS::S3::Bucket # When you provide properties, cloud formation will give a default bucket name
+
 
