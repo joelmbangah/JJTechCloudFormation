@@ -8,9 +8,11 @@ Metadata:
 
 Parameters:
   set of parameters
+    # You can have multiple resources in the resource block
 
 Mappings:
   set of mappings
+    # You can have multiple resources in the resource block
 
 Conditions:
   set of conditions
